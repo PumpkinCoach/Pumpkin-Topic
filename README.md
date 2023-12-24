@@ -1,5 +1,5 @@
 # Pumpkin-Topic
-- ㅇ
+- 슬랙 워크스페이스 내에서 관심사가 같은 사람들과 익명으로 대화를 나눠봐요!
 ## 권한
 - AmazonDynamoDBFullAccess
   - 회원 정보와 채팅 정보를 관리하는 DynamoDB 에 접근하기 위함
