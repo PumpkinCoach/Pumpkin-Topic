@@ -9,12 +9,13 @@ from slack_bolt import App
 from slack_bolt.adapter.aws_lambda import SlackRequestHandler
 from boto3.dynamodb.conditions import Key
 
-bot_token = '' # slack bot token
-api_key = '' # openai api key
+BOT_TOKEN = os.environ['PROD_BOT_TOKEN']
+API_KEY = os.environ['PROD_GPT_API_KEY']
+SIGNING_SECRET = os.environ['PROD_SIGNING_SECRET']
 
 app = App(
-    token=bot_token,
-    signing_secret="", # slack bot signing secret
+    token=BOT_TOKEN,
+    signing_secret=SIGNING_SECRET,
     process_before_response=True
 )
 
@@ -43,7 +44,7 @@ def respond_to_slack_within_3_seconds(ack):
 def chatgpt_response(message, say):
     
     # OpenAI API 키를 설정합니다
-    openai.api_key = api_key
+    openai.api_key = API_KEY
     
     # OpenAI GPT-3를 사용하여 텍스트를 생성합니다
     response = openai.Completion.create(
